@@ -1,1 +1,11 @@
-{}
+{
+  "projectloopback": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "schemaloopback",
+    "password": "loopback",
+    "name": "projectloopback",
+    "user": "root",
+    "connector": "mysql"
+  }
+}
