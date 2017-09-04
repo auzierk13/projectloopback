@@ -29,5 +29,5 @@ angular.module('app',['ui.router','lbServices'])
 				templateUrl: 'views/book/listagem.html',
 				controller: 'BookListaController'
 			})
-		$urlRouterProvider.otherwise('/lista-book');
+		$urlRouterProvider.otherwise('/lista-author');
 	}]);
