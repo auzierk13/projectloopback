@@ -61,13 +61,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "autorLivro": {
-      "type": "belongsTo",
-      "model": "Author",
-      "foreignKey": "authorId"
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
