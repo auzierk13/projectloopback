@@ -3,6 +3,7 @@ angular
 	.module('app')
 	.controller('AuthorListaControler',['$scope','$state','Author', function($scope, $state, Author){
 		$scope.authores = {};
+		$scope.dataAuthor= {};
 		// find, findOne , findByID
 		function listaAuthor(){
 			Author.find().$promise.then(function(res,err){
@@ -10,8 +11,23 @@ angular
 			});
 		}
 
+		$scope.recoverAuthor = function(author){
+			    $scope.dataAuthor = author;
+			}
+
+		$scope.editaAuthor = function(author){
+			console.log("Editar");
+			console.log(author);
+		}
+
+		$scope.removeAuthor = function(author){
+			console.log("Remove");
+			console.log(author);
+		}
+
 		listaAuthor();
 	}])
+
 	.controller('AuthorAdicionaController',['$scope','$state','Author', function($scope, $state, Author){
 		// $scope.form = {};
 

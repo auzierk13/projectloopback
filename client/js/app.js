@@ -15,7 +15,7 @@ angular.module('app',['ui.router','lbServices'])
 				templateUrl: 'views/author/listagem.html',
 				controller: 'AuthorListaControler'
 			})
-
+			
 			//Book
 			// Adiciona 
 			.state('adicionaBook',{
