@@ -1,9 +1,46 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title> Loop back </title>
-</head>
-<body>
-<h1> Hello world</h1>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LoopBack Angular example</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+  </head>
+  <!-- <body ng-app="app"> -->
+  <body>
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
+      <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Projeto Exemplo</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Author</a></li>
+            <li><a href="#about">Book</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="js/services/lb-services.js"></script>
+   <!--  <script src="js/app.js"></script>
+    <script src="js/controllers/todo.js"></script> -->
+  </body>
 </html>
