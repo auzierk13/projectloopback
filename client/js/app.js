@@ -1,0 +1,1 @@
+angular angular-resource angular-ui-router bootstrap
