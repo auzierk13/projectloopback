@@ -1,0 +1,26 @@
+<h2>Lista de Author</h2>
+<hr>
+<div>
+    <a href="#/adiciona-produto" class="btn btn-large btn-primary">Novo</a>
+</div>
+<br>
+<div class="table-responsive">
+    {{authores}}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Frist Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="author in authores">
+                <td> {{author.id}}</td>
+                <td> {{author.firstname}}</td>
+                <td> {{author.lastname}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

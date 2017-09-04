@@ -11,8 +11,7 @@
     <link href="css/styles.css" rel="stylesheet">
 
   </head>
-  <!-- <body ng-app="app"> -->
-  <body>
+  <body ng-app="app">
     <!-- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
       <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
@@ -34,13 +33,31 @@
       </div>
     </nav>
 
+	<div class="container">
+
+  	  <div class="row">
+   	     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+   	         <div class="list-group">
+   	             <a href="#/lista-produto" class="list-group-item active">Author</a>
+   	             <a href="#/lista-marca" class="list-group-item">Book</a>
+   	         </div>
+   	     </div>
+   	     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+   	         <div ui-view></div>
+   	     </div>
+
+      </div>
+
+
+    </div> <!-- /container -->
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="js/services/lb-services.js"></script>
-   <!--  <script src="js/app.js"></script>
-    <script src="js/controllers/todo.js"></script> -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllerBook.js"></script>
+    <script src="js/controllers/controllerAuthor.js"></script>
   </body>
 </html>
