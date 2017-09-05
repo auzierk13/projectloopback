@@ -5,9 +5,15 @@
             <label class="sr-only" for="">Title</label>
             <input type="text" placeholder="Title" id="" class="form-control" ng-model="book.title">
             <label class="sr-only" for="">Authorid </label>
-            <input type="text" placeholder="Authorid" id="" class="form-control" ng-model="book.authorid">
-        </div>
+            <select class="selectpicker form-control" ng-model="book.authorid">
+              <option ng-repeat="option in listaAuthorids" >
+                    {{option.authorid}}
+              </option>
+            </select>
+            <!-- <input type="text" placeholder={{book.authorid}} id="" class="form-control" ng-model="book.title">aaa -->
 
-    <button type="type="reset"" ng-click="adicionarBook(book)" class="btn btn-primary"> Cadastrar</button>
+        </div>
+    <a href="#!/lista-book" ng-click="adicionarBook(book)" class="btn btn-primary" role="button">Cadastrar</a>
+    </button>
     </div>
 </form>

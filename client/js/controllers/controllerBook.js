@@ -77,11 +77,57 @@ angular
 	}])
 	.controller('BookAdicionaCotroller',['$scope','$state','Book', function($scope, $state, Book){
 		//#### Create ####
-		$scope.adicionarBook = function(book){
-			book.id = 0;
-			console.log(book);
-			Book.create(book).$promise.then(function(res,err){
-				console.log(res);
+		$scope.books =[];
+		$scope.listaAuthorids =[];
+		// $scope.data = {
+		//     model: null,
+		//     availableOptions: [
+		//       {id: '1', name: 'Option A'},
+		//       {id: '2', name: 'Option B'},
+		//       {id: '3', name: 'Option C'}
+		//     ]
+		//    };
+		$scope.hasID=false;
+		function listaAuthorID(){
+			$scope.books.forEach(function(book){
+				
+				if($scope.listaAuthorids.length== 0){ //Vazio
+					$scope.listaAuthorids.push(book);
+					// console.log($scope.listaAuthorids);
+				}else{
+					$scope.listaAuthorids.forEach( function(id) {
+						if(id.authorid == book.authorid){
+							$scope.hasID = true;
+						}
+					});
+					if(!$scope.hasID){
+						$scope.listaAuthorids.push(book);
+						// console.log($scope.listaAuthorids);
+						$scope.hasID = false;
+					}
+					// if($scope.listaAuthorids)
+				}
 			});
 		}
+
+		function listaBook(){
+			Book.find().$promise.then(function(res,err){
+				$scope.books= res;
+		    	listaAuthorID();
+		    });
+		}
+
+		$scope.adicionarBook = function(book){
+			console.log(book);
+			if(!book){
+				console.log("Erro ao Adicionar");
+			}else{
+				book.id = 0;
+				Book.create(book).$promise.then(function(res,err){
+					console.log(res);
+				});
+				
+			}
+		}
+		listaBook();
 	}]);
