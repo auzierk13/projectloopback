@@ -74,4 +74,14 @@ angular
 		}
 
 
+	}])
+	.controller('BookAdicionaCotroller',['$scope','$state','Book', function($scope, $state, Book){
+		//#### Create ####
+		$scope.adicionarBook = function(book){
+			book.id = 0;
+			console.log(book);
+			Book.create(book).$promise.then(function(res,err){
+				console.log(res);
+			});
+		}
 	}]);
