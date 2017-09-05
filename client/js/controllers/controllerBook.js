@@ -25,7 +25,28 @@ angular
 					console.log(err);
 			});
 		}
+			//######### Editar ###########
+		$scope.editaBook = function(book){
 
+			if(!book){
+				console.log("Erro ao Editar");
+			}else{
+				console.log("Editar");
+				if(book.title){
+					$scope.dataBook.title = book.title; 
+					console.log('Não possui title');
+				}else if(book.authorid){
+					$scope.dataBook.authorid = book.authorid; 
+					console.log('Não possui authorid');
+				}
+				// editAuthor.id = $scope.dataAuthor.id; //recebe id selecionado
+				delete $scope.book;
+				console.log($scope.dataBook);
+				Book.replaceById($scope.dataBook.id,$scope.dataBook, function(err, res) {
+					listaBook();
+				});
+			}
+		}	
 		//############ Sort books #####################
 		$scope.sortField = "id";
  	 	$scope.reverse= false;

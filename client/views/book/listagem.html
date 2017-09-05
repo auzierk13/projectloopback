@@ -25,16 +25,16 @@
                     Title
                     <span class= {{isIcones[1].img}}> </span>
                 </th>
+                <th>AuthorId</th>
                 <th>Editar</th>
                 <th>Remover</th>
-                <!-- <th>AuthorId</th> -->
             </tr>
         </thead>
         <tbody>
             <tr dir-paginate="book in books| filter:procurar| orderBy:sortField:reverse|itemsPerPage:5">
                 <td> {{book.id}}</td>
                 <td> {{book.title}}</td>
-                <!-- <td> {{book.authorid}}</td> -->
+                <td> {{book.authorid}}</td>
                 <td>
                     <p data-placement="top" data-toggle="tooltip" title="Edit">
                         <button ng-click="recoverBook(book);" class="btn btn-primary btn-xs"
@@ -56,6 +56,45 @@
     </table>
     <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
 </div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog" >
+    <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+            <h4 class="modal-title custom_align" id="Heading">Edit Book Detail</h4>
+      </div>
+        <form>
+            
+          <div class="modal-body">
+            <div class="form-group">
+                <input disabled class="form-control" 
+                       type="text" placeholder={{dataBook.id}}> 
+             </div>
+            <div class="form-group">
+
+                <input class="form-control" ng-model="book.title"
+                        type="text" placeholder={{dataBook.title}}> 
+            </div>
+            <div class="form-group">
+                <input class="form-control " ng-model="book.authorid"
+                        type="text" placeholder={{dataBook.authorid}}>
+            </div>
+         </div>
+          <div class="modal-footer ">
+                <button type="reset" ng-click="editaBook(book);" class="btn btn-warning btn-lg"
+                style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+          </div>
+        </div>
+
+    </form>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+
 
 <!-- Delete Book -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
