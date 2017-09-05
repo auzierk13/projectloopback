@@ -4,23 +4,38 @@
     <a href="#!/adiciona-books" class="btn btn-large btn-primary">Novo</a>
 </div>
 <br>
+
+<form class="form-inline">
+    <div class="form-group" >
+        <span class="input-group-addon glyphicon glyphicon-search">
+        <input type="text" ng-model="procurar"  placeholder="Procurar...">
+        </span>
+    </div>
+</form>
 <div class="table-responsive">
     <!-- {{books}} -->
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>AuthorId</th>
+                <th ng-click="sort('id')" >
+                    Id
+                    <span class= {{isIcones[0].img}}> </span>
+                </th>
+                <th ng-click="sort('id')">
+                    Title
+                    <span class= {{isIcones[1].img}}> </span>
+                </th>
+                <!-- <th>AuthorId</th> -->
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="book in books">
+            <tr dir-paginate="book in books| filter:procurar| orderBy:sortField:reverse|itemsPerPage:5">
                 <td> {{book.id}}</td>
                 <td> {{book.title}}</td>
-                <td> {{book.authorid}}</td>
+                <!-- <td> {{book.authorid}}</td> -->
                 <td></td>
             </tr>
         </tbody>
     </table>
+    <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
 </div>
