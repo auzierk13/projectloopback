@@ -39,9 +39,13 @@ angular
 			}
 		}
 
-		$scope.removeAuthor = function(author){
+		$scope.removeAuthor = function(){
 			console.log("Remove");
-			console.log(author);
+			console.log($scope.dataAuthor);
+			Author.deleteById({id:$scope.dataAuthor.id}).$promise.then(function(res,err){
+					listaAuthor();
+					console.log(err);
+			});
 		}
 
 		listaAuthor();
