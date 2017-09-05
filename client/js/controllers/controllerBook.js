@@ -10,23 +10,40 @@ angular
 		}
 
 		listaBook();
-		//###Sort books 
+		// ######### Delete e edit book
+		$scope.dataBook= {};
+		$scope.recoverBook = function(book){
+		   $scope.dataBook = book;
+		   console.log($scope.dataBook);
+		}
+			//######## Delete ##############
+		$scope.removeBook = function(){
+			console.log("Remove");
+			console.log($scope.dataBook);
+			Book.deleteById({id:$scope.dataBook.id}).$promise.then(function(res,err){
+					listaBook();
+					console.log(err);
+			});
+		}
+
+		//############ Sort books #####################
 		$scope.sortField = "id";
- 	 	$scope.reverse=false;
+ 	 	$scope.reverse= false;
  	 	$scope.isIcones=[	{nome: "id", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+							{nome: "title", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 							{nome: "firstname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 							{nome: "lastname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
 					 	];
-	function chooseIcone (sortBook) {
-		 $scope.isIcones.forEach( function(icone) {
-		 	if(icone.nome === sortBook){
-				icone.selectIcone=!icone.selectIcone; //Inverte o icone
-		 	}else{
-		 		icone.selectIcone=false;
-		 	}
-				!icone.selectIcone? icone.img="glyphicon glyphicon-chevron-up":icone.img="glyphicon glyphicon-chevron-down";
-		 });
-	}
+		function chooseIcone (sortBook) {
+			 $scope.isIcones.forEach( function(icone) {
+			 	if(icone.nome === sortBook){
+					icone.selectIcone=!icone.selectIcone; //Inverte o icone
+			 	}else{
+			 		icone.selectIcone=false;
+			 	}
+					!icone.selectIcone? icone.img="glyphicon glyphicon-chevron-up":icone.img="glyphicon glyphicon-chevron-down";
+			});
+		}
 
 		$scope.sort = function(sortBook){
 			console.log(sortBook);
@@ -34,4 +51,6 @@ angular
 			$scope.reverse = !$scope.reverse;
 			chooseIcone(sortBook);
 		}
+
+
 	}]);
