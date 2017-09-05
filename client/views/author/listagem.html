@@ -4,20 +4,35 @@
     <a href="#!/adiciona-author" class="btn btn-large btn-primary">Novo</a>
 </div>
 <br>
+<form class="form-inline">
+    <div class="form-group" >
+        <span class="input-group-addon glyphicon glyphicon-search">
+        <input type="text" ng-model="procurar"  placeholder="Procurar...">
+        </span>
+    </div>
+</form>
 <div class="table-responsive">
     <!-- {{authores}} -->
     <table class="table table-hover">
+        
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Frist Name</th>
+                <th ng-click="sort('Id')" >
+                    Id
+                    <span class= {{isIcones[0].img}}> </span>
+                </th>
+                <th ng-click="sort('fristname')">
+                        Frist Name
+                        <span class= {{isIcones[1].img}}> </span>
+                </th>
                 <th>Last Name</th>
                 <th>Editar</th>
                 <th>Remover</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="author in authores">
+            <!-- <tr ng-repeat="author in authores | orderBy:+fristname"> -->
+            <tr ng-repeat="author in authores | filter : procurar">
                 <td> {{author.id}}</td>
                 <td> {{author.firstname}}</td>
                 <td> {{author.lastname}}</td>

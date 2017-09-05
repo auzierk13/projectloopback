@@ -1,8 +1,23 @@
 'use strict'; 
 angular
 	.module('app')
+	// .filter('custom', function() {
+	// 	  return function(input, search) {
+	// 	    if (!input) return input;
+	// 	    if (!search) return input;
+	// 	    var expected = ('' + search).toLowerCase();
+	// 	    var result = {};
+	// 	    angular.forEach(input, function(value, key) {
+	// 	      var actual = ('' + value).toLowerCase();
+	// 	      if (actual.indexOf(expected) !== -1) {
+	// 	        result[key] = value;
+	// 	      }
+	// 	    });
+	// 	    return result;
+	// 	  }
+	// })
 	.controller('AuthorListaControler',['$scope','$state','Author', function($scope, $state, Author){
-		$scope.authores = {};
+		$scope.authores = [];
 		$scope.dataAuthor= {};
 		// find, findOne , findByID
 		function listaAuthor(){
@@ -15,6 +30,29 @@ angular
 			    $scope.dataAuthor = author;
 				console.log($scope.dataAuthor);
 			}
+	  $scope.procurar="";
+ 	  $scope.sortField = "fristname";
+      $scope.isIcones=[	{nome: "Id", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+						{nome: "fristname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+						{nome: "Last Name", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
+					 ];
+	function chooseIcone (fieldSort) {
+		 $scope.isIcones.forEach( function(icone) {
+		 	if(icone.nome === fieldSort){
+				icone.selectIcone=!icone.selectIcone; //Inverte o icone
+		 	}else{
+		 		icone.selectIcone=false;
+		 	}
+				!icone.selectIcone? icone.img="glyphicon glyphicon-chevron-up":icone.img="glyphicon glyphicon-chevron-down";
+		 });
+	}
+
+		$scope.sort = function(fieldSort){
+			console.log(fieldSort);
+			$scope.sortField=fieldSort;
+			chooseIcone(fieldSort);
+		}
+
 
 		$scope.editaAuthor = function(editAuthor){
 
