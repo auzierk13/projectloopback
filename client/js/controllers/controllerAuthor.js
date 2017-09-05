@@ -1,21 +1,6 @@
 'use strict'; 
 angular
 	.module('app')
-	// .filter('custom', function() {
-	// 	  return function(input, search) {
-	// 	    if (!input) return input;
-	// 	    if (!search) return input;
-	// 	    var expected = ('' + search).toLowerCase();
-	// 	    var result = {};
-	// 	    angular.forEach(input, function(value, key) {
-	// 	      var actual = ('' + value).toLowerCase();
-	// 	      if (actual.indexOf(expected) !== -1) {
-	// 	        result[key] = value;
-	// 	      }
-	// 	    });
-	// 	    return result;
-	// 	  }
-	// })
 	.controller('AuthorListaControler',['$scope','$state','Author', function($scope, $state, Author){
 		$scope.authores = [];
 		$scope.dataAuthor= {};
@@ -30,11 +15,11 @@ angular
 			    $scope.dataAuthor = author;
 				console.log($scope.dataAuthor);
 			}
-	  $scope.procurar="";
- 	  $scope.sortField = "fristname";
-      $scope.isIcones=[	{nome: "Id", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
-						{nome: "fristname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
-						{nome: "Last Name", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
+ 	  $scope.sortField = "id";
+ 	  $scope.reverse=false;
+      $scope.isIcones=[	{nome: "id", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+						{nome: "firstname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+						{nome: "lastname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
 					 ];
 	function chooseIcone (fieldSort) {
 		 $scope.isIcones.forEach( function(icone) {
@@ -50,6 +35,7 @@ angular
 		$scope.sort = function(fieldSort){
 			console.log(fieldSort);
 			$scope.sortField=fieldSort;
+			$scope.reverse = !$scope.reverse;
 			chooseIcone(fieldSort);
 		}
 
