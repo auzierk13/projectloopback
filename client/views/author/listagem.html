@@ -35,7 +35,7 @@
         </thead>
         <tbody>
             <!-- <tr ng-repeat="author in authores | orderBy:+fristname"> -->
-            <tr ng-repeat="author in authores | filter:procurar| orderBy:sortField:reverse">
+            <tr dir-paginate ="author in authores | filter:procurar| orderBy:sortField:reverse|itemsPerPage:5">
                 <td> {{author.id}}</td>
                 <td> {{author.firstname}}</td>
                 <td> {{author.lastname}}</td>
@@ -62,6 +62,7 @@
             </tr>
         </tbody>
     </table>
+    <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
 </div>
 
 

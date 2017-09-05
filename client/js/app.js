@@ -1,4 +1,4 @@
-angular.module('app',['ui.router','lbServices'])
+angular.module('app',['ui.router','lbServices','angularUtils.directives.dirPagination'])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 		$stateProvider
 
