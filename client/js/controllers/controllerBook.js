@@ -1,11 +1,29 @@
 'use strict';
 angular
 	.module('app')
-	.controller('BookListaController',['$scope','$state','Book', function($scope, $state, Book){
+	.controller('BookListaController',['$scope','$state','Book','Author', function($scope, $state,Book,Author){
 		$scope.books =[];
+		$scope.authors =[];
+
 		function listaBook(){
 			Book.find().$promise.then(function(res,err){
 				$scope.books= res;
+		    });
+
+		    Author.find().$promise.then(function(res,err){
+				$scope.authors =res;
+				console.log($scope.authors);				
+		    console.log('Unir lista'); 
+		    $scope.authors.forEach( function(author) {
+		    	$scope.books.forEach( function(book) {
+		    		if(book.authorid == author.id){
+		    			book.firstname = author.firstname;
+		    			book.lastname= author.lastname;
+		    		}
+		    	});
+		    });
+
+		    
 		    });
 		}
 
@@ -18,8 +36,8 @@ angular
 		}
 			//######## Delete ##############
 		$scope.removeBook = function(){
-			console.log("Remove");
-			console.log($scope.dataBook);
+			// console.log("Remove");
+			// console.log($scope.dataBook);
 			Book.deleteById({id:$scope.dataBook.id}).$promise.then(function(res,err){
 					listaBook();
 					console.log(err);
@@ -34,14 +52,14 @@ angular
 				console.log("Editar");
 				if(book.title){
 					$scope.dataBook.title = book.title; 
-					console.log('Não possui title');
+					// console.log('Não possui title');
 				}else if(book.authorid){
 					$scope.dataBook.authorid = book.authorid; 
-					console.log('Não possui authorid');
+					// console.log('Não possui authorid');
 				}
 				// editAuthor.id = $scope.dataAuthor.id; //recebe id selecionado
 				delete $scope.book;
-				console.log($scope.dataBook);
+				// console.log($scope.dataBook);
 				Book.replaceById($scope.dataBook.id,$scope.dataBook, function(err, res) {
 					listaBook();
 				});
@@ -52,6 +70,7 @@ angular
  	 	$scope.reverse= false;
  	 	$scope.isIcones=[	{nome: "id", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 							{nome: "title", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
+							{nome: "authorid", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 							{nome: "firstname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 							{nome: "lastname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
 					 	];

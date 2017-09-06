@@ -25,7 +25,18 @@
                     Title
                     <span class= {{isIcones[1].img}}> </span>
                 </th>
-                <th>AuthorId</th>
+                <th ng-click="sort('authorid')">
+                    AuthorId
+                    <span class= {{isIcones[2].img}}> </span>
+                </th>
+                <th ng-click="sort('firstname')">
+                    First name
+                    <span class= {{isIcones[3].img}}> </span>
+                </th>
+                <th ng-click="sort('lastname')">
+                    Last name
+                    <span class= {{isIcones[4].img}}> </span>
+                </th>
                 <th>Editar</th>
                 <th>Remover</th>
             </tr>
@@ -35,6 +46,8 @@
                 <td> {{book.id}}</td>
                 <td> {{book.title}}</td>
                 <td> {{book.authorid}}</td>
+                <td> {{book.firstname}}</td>
+                <td> {{book.lastname}}</td>
                 <td>
                     <p data-placement="top" data-toggle="tooltip" title="Edit">
                         <button ng-click="recoverBook(book);" class="btn btn-primary btn-xs"
