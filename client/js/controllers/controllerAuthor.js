@@ -80,16 +80,15 @@ angular
 		// $scope.form = {};
 
 		$scope.adicionarAuthor = function(author){
-			author.id = 0;
-			console.log(author);
-			// Author.create(author,function(res,err){
-
-			// 	console.log(res);
-			// });
-
-			Author.create(author).$promise.then(function(res,err){
-
+			if(!author){
+				console.log("Erro ao Adicionar");
+			}else{
+				author.id = 0;
+				console.log(author);
+				Author.create(author).$promise.then(function(res,err){
 				console.log(res);
-			});
+				});
+				
+			}
 		}
 	}]);

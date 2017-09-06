@@ -1,0 +1,19 @@
+<form class="form-inline">
+    <legend>Novo Book</legend>
+    <div class="jumbotron">
+        <div class="form-group">
+            <label class="sr-only" for="">Title</label>
+            <input type="text" placeholder="Title" id="" class="form-control" ng-model="book.title">
+            <label class="sr-only" for="">Authorid </label>
+            <select class="selectpicker form-control" ng-model="book.authorid">
+              <option ng-repeat="option in authors1" >
+                    {{option.id}}
+              </option>
+            </select>
+            <!-- <input type="text" placeholder={{book.authorid}} id="" class="form-control" ng-model="book.title">aaa -->
+
+        </div>
+    <a href="#!/lista-book" ng-click="adicionarBook(book)" class="btn btn-primary" role="button">Cadastrar</a>
+    </button>
+    </div>
+</form>

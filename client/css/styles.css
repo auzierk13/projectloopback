@@ -4,3 +4,7 @@ body {
 .glyphicon-remove:hover {
   cursor:pointer
 }
+
+.input-group{
+	padding-bottom: 6px;
+}
