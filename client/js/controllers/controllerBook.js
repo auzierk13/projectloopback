@@ -17,6 +17,7 @@ angular
 		    $scope.authors.forEach( function(author) {
 		    	$scope.books.forEach( function(book) {
 		    		if(book.authorid == author.id){
+		    			book.idAuthor = author.id;
 		    			book.firstname = author.firstname;
 		    			book.lastname= author.lastname;
 		    		}
@@ -43,8 +44,31 @@ angular
 					console.log(err);
 			});
 		}
-			//######### Editar ###########
-		$scope.editaBook = function(book){
+		//######### Editar ###########
+		function editaAuthor (editAuthor){
+
+			if(!editAuthor){
+				console.log("Erro ao Editar");
+			}else{
+				console.log("Editar");
+				if(!editAuthor.firstname){
+					editAuthor.firstname = $scope.dataBook.lastname;
+					// $scope.dataAuthor.firstname = editAuthor.firstname; 
+					console.log('Não possui firstname');
+				}else if(!editAuthor.lastname){
+					editAuthor.lastname = $scope.dataBook.lastname;
+					// $scope.dataAuthor.lastname = editAuthor.lastname; 
+					console.log('Não possui lastname');
+				}
+				editAuthor.id = $scope.dataBook.idAuthor; //recebe id selecionado
+				console.log(editAuthor);
+				Author.replaceById($scope.dataBook.id,editAuthor, function(err, res) {
+					delete $scope.editAuthor;
+					listaBook();
+				});
+			}
+		}
+		$scope.editaBook = function(book,author){
 
 			if(!book){
 				console.log("Erro ao Editar");
@@ -63,7 +87,9 @@ angular
 				Book.replaceById($scope.dataBook.id,$scope.dataBook, function(err, res) {
 					listaBook();
 				});
+
 			}
+				editaAuthor(author);
 		}	
 		//############ Sort books #####################
 		$scope.sortField = "id";
@@ -94,45 +120,20 @@ angular
 
 
 	}])
-	.controller('BookAdicionaCotroller',['$scope','$state','Book', function($scope, $state, Book){
+	.controller('BookAdicionaCotroller',['$scope','$state','Book','Author', function($scope, $state,Book,Author){
 		//#### Create ####
 		$scope.books =[];
-		$scope.listaAuthorids =[];
-		// $scope.data = {
-		//     model: null,
-		//     availableOptions: [
-		//       {id: '1', name: 'Option A'},
-		//       {id: '2', name: 'Option B'},
-		//       {id: '3', name: 'Option C'}
-		//     ]
-		//    };
-		$scope.hasID=false;
-		function listaAuthorID(){
-			$scope.books.forEach(function(book){
-				
-				if($scope.listaAuthorids.length== 0){ //Vazio
-					$scope.listaAuthorids.push(book);
-					// console.log($scope.listaAuthorids);
-				}else{
-					$scope.listaAuthorids.forEach( function(id) {
-						if(id.authorid == book.authorid){
-							$scope.hasID = true;
-						}
-					});
-					if(!$scope.hasID){
-						$scope.listaAuthorids.push(book);
-						// console.log($scope.listaAuthorids);
-						$scope.hasID = false;
-					}
-					// if($scope.listaAuthorids)
-				}
-			});
-		}
+		$scope.authors1 =[]; //Lista id author sem duplicidade
+		
 
 		function listaBook(){
 			Book.find().$promise.then(function(res,err){
 				$scope.books= res;
-		    	listaAuthorID();
+		    });
+		    Author.find().$promise.then(function(res,err){
+				$scope.authors1 =res;
+				console.log($scope.authors);				
+		    	console.log('Unir lista'); 
 		    });
 		}
 

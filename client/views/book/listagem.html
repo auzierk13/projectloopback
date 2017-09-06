@@ -82,22 +82,38 @@
         <form>
             
           <div class="modal-body">
-            <div class="form-group">
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Id</span>
                 <input disabled class="form-control" 
                        type="text" placeholder={{dataBook.id}}> 
              </div>
-            <div class="form-group">
-
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Title</span>
                 <input class="form-control" ng-model="book.title"
                         type="text" placeholder={{dataBook.title}}> 
             </div>
-            <div class="form-group">
-                <input class="form-control " ng-model="book.authorid"
-                        type="text" placeholder={{dataBook.authorid}}>
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Author id</span>
+                <select class="selectpicker form-control"  data-style="btn-primary"
+                        ng-model="book.authorid">
+                    <option ng-repeat="option in authors" >
+                        {{option.id}}
+                    </option>
+            </select>
+            </div>
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">First Name</span>
+                <input class="form-control " ng-model="author.firstname"
+                        type="text" placeholder={{dataBook.firstname}}>
+            </div>
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Last Name</span>
+                <input class="form-control " ng-model="author.lastname"
+                        type="text" placeholder={{dataBook.lastname}}>
             </div>
          </div>
           <div class="modal-footer ">
-                <button type="reset" ng-click="editaBook(book);" class="btn btn-warning btn-lg"
+                <button type="reset" ng-click="editaBook(book,author);" class="btn btn-warning btn-lg"
                 style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
           </div>
         </div>
