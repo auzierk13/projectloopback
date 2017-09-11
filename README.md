@@ -13,7 +13,7 @@ Instale:
 ## Instalação
 
 
-1. Clone o repositório: `git clone https://bauzierc@bitbucket.org/bauzierc/projectloopback.git`
+1. Clone o repositório: `git clone https://github.com/auzierk13/projectloopback`
 2.	Acesse pasta raiz do projeto cd projectloopback
 3.	Instale os pacotes:
 		 `npm install`
