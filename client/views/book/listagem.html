@@ -4,7 +4,10 @@
 
 <div>
     <!-- <a href="#!/adiciona-book" class="btn btn-large btn-primary" >Novo</a> -->
-    <button class="btn btn-primary" ng-show="!isAddBook" ng-click="showAddBook()">Novo</button>
+    <button class="btn btn-primary " ng-show="!isAddBook" ng-click="showAddBook()">
+        <span class=" glyphicon glyphicon-saved"></span>
+        Novo
+    </button>
 </div>
 <br>
 
@@ -23,11 +26,16 @@
             </select>
              <!-- <p>{{formAddBook.$valid}}</p> -->
         </div>
-        <button type="reset" class="btn btn-warning" ng-click="showAddBook(book)">Cancel</button>
+        <button type="reset" class="btn btn-warning " ng-click="showAddBook(book)"> 
+            <span class="glyphicon glyphicon-remove"></span>           
+            Cancel
+        </button>
+
         <button ng-click="addBook(book)"
         ng-disabled="!formAddBook.$valid"
         class="btn btn-primary"
         type="reset">
+         <span class="glyphicon glyphicon-ok"></span>
             Cadastrar
         </button>
     </div>
@@ -146,7 +154,7 @@
          </div>
           <div class="modal-footer ">
                 <button type="reset" ng-click="editaBook(book,author);" class="btn btn-warning btn-lg"
-                style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                style="width: 100%;"><span class="glyphicon glyphicon-ok"></span> Update</button>
           </div>
         </div>
 
@@ -171,7 +179,7 @@
        
       </div>
         <div class="modal-footer ">
-        <button type="button" data-dismiss="modal" ng-click="removeBook();" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" data-dismiss="modal" ng-click="removeBook();" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>

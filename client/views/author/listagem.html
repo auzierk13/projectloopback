@@ -4,6 +4,7 @@
     <button class="btn btn-large btn-primary" 
             ng-click="showAddAuthor()"
             ng-show="!isAddAuthor">
+             <span class=" glyphicon glyphicon-saved"></span>
               Novo
     </button>
 </div>
@@ -27,10 +28,14 @@
     <p> Author {{author.firstname}}</p>
     <p>Author {{author.lastname}}</p> -->
     <!-- É $setDirty()  {{formAddAuthor.$setDirty}}? -->
-    <button type="reset" class="btn btn-warning" ng-click="showAddAuthor(author)">Cancel</button>
-    <button type="reset" class="btn btn-primary"
+    <button type="reset" class="btn btn-warning" ng-click="showAddAuthor(author)">
+        <span class="glyphicon glyphicon-remove"></span>     
+        Cancel
+    </button>
+    <button type="reset" class="btn btn-primary" 
         ng-click="addAuthor(author)"
         ng-disabled="!formAddAuthor.$valid" >
+         <span class="glyphicon glyphicon-ok"></span>
         Cadastrar
     </button>
     </div>
@@ -125,7 +130,7 @@
          </div>
           <div class="modal-footer ">
                 <button type="reset" ng-click="editaAuthor(author);" class="btn btn-warning btn-lg"
-                style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                style="width: 100%;"><span class="glyphicon glyphicon-ok"></span> Update</button>
           </div>
         </div>
 
@@ -151,7 +156,7 @@
        
       </div>
         <div class="modal-footer ">
-        <button type="button" data-dismiss="modal" ng-click="removeAuthor();" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" data-dismiss="modal" ng-click="removeAuthor();" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
