@@ -8,24 +8,22 @@ angular
 		function listaBook(){
 			Book.find().$promise.then(function(res,err){
 				$scope.books= res;
+			    Author.find().$promise.then(function(res,err){
+					$scope.authors =res;
+					console.log($scope.authors);				
+			   		console.log('Unir lista'); 
+			    	$scope.authors.forEach( function(author) {
+				    	$scope.books.forEach( function(book) {
+				    		if(book.authorid == author.id){
+				    			book.idAuthor = author.id;
+				    			book.firstname = author.firstname;
+				    			book.lastname= author.lastname;
+				    		}
+				    	}); //end forEach books
+			    	});//end forEach authors
+			    });
 		    });
 
-		    Author.find().$promise.then(function(res,err){
-				$scope.authors =res;
-				console.log($scope.authors);				
-		    console.log('Unir lista'); 
-		    $scope.authors.forEach( function(author) {
-		    	$scope.books.forEach( function(book) {
-		    		if(book.authorid == author.id){
-		    			book.idAuthor = author.id;
-		    			book.firstname = author.firstname;
-		    			book.lastname= author.lastname;
-		    		}
-		    	});
-		    });
-
-		    
-		    });
 		}
 
 		listaBook();
