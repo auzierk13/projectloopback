@@ -4,7 +4,7 @@
 
 <div>
     <!-- <a href="#!/adiciona-book" class="btn btn-large btn-primary" >Novo</a> -->
-    <button class="btn btn-primary" ng-click="showAddBook()">{{btnAddBook}}</button>
+    <button class="btn btn-primary" ng-show="!isAddBook" ng-click="showAddBook()">{{btnAddBook}}</button>
 </div>
 <br>
 <form class="form-inline" ng-show="isAddBook" name="formAddBook">
@@ -22,11 +22,13 @@
             </select>
              <!-- <p>{{formAddBook.$valid}}</p> -->
         </div>
-    <button href="#!/lista-book" ng-click="addBook(book)"
+        <button type="reset" class="btn btn-warning" ng-click="showAddBook()">Cancel</button>
+        <button href="#!/lista-book" ng-click="addBook(book)"
         ng-disabled="!formAddBook.$valid"
         class="btn btn-primary"
         type="reset">
-        Cadastrar
+            Cadastrar
+        </button>
     </div>
 </form>
 
@@ -96,6 +98,9 @@
     <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
 </div>
 
+
+
+<!-- Editar livro -->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog" >
     <div class="modal-content">

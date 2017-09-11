@@ -68,6 +68,7 @@ angular
 				});
 			}
 		}
+		//Editar livro
 		$scope.editaBook = function(book,author){
 
 			if(!book){
@@ -90,7 +91,9 @@ angular
 
 			}
 				editaAuthor(author);
-		}	
+		}
+
+			
 		//############ Sort books #####################
 		$scope.sortField = "id";
  	 	$scope.reverse= false;
@@ -124,7 +127,7 @@ angular
 		$scope.showAddBook = function(){
 			console.log("Adicionar Livro");
 			$scope.isAddBook= !$scope.isAddBook;
-			$scope.isAddBook?$scope.btnAddBook= "Cancel":$scope.btnAddBook= "Novo";
+			// $scope.isAddBook?$scope.btnAddBook= "Cancel":$scope.btnAddBook= "Novo";
 			return $scope.isAddBook;
 			
 		}
