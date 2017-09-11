@@ -3,10 +3,15 @@
     <div class="jumbotron">
         <div class="form-group">
             <label class="sr-only" for="">Frist Name</label>
-            <input type="text" placeholder="Frist Name" id="" class="form-control" ng-model="author.firstname">
+            <input type="text" placeholder="Frist Name" 
+                   class="form-control" ng-model="author.firstname">
             <label class="sr-only" for="">Last Name</label>
-            <input type="text" placeholder="Last Name" id="" class="form-control" ng-model="author.lastname">
+            <input type="text" placeholder="Last Name"  
+                   class="form-control" ng-model="author.lastname">
         </div>
-    <a href="#!/lista-author" ng-click="adicionarAuthor(author)" class="btn btn-primary" role="button">Cadastrar</a>
+    <a href="#!/lista-author" ng-click="adicionarAuthor(author)"
+        ng-disabled="!author.firstname || !author.lastname" class="btn btn-primary" role="button">
+        Cadastrar
+    </a>
     </div>
 </form>

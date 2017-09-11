@@ -118,26 +118,17 @@ angular
 			chooseIcone(sortBook);
 		}
 
+		$scope.isAddBook = false;
+		$scope.btnAddBook= "Novo";
 
-	}])
-	.controller('BookAdicionaCotroller',['$scope','$state','Book','Author', function($scope, $state,Book,Author){
-		//#### Create ####
-		$scope.books =[];
-		$scope.authors1 =[]; //Lista id author sem duplicidade
-		
-
-		function listaBook(){
-			Book.find().$promise.then(function(res,err){
-				$scope.books= res;
-		    });
-		    Author.find().$promise.then(function(res,err){
-				$scope.authors1 =res;
-				console.log($scope.authors);				
-		    	console.log('Unir lista'); 
-		    });
+		$scope.showAddBook = function(){
+			console.log("Adicionar Livro");
+			$scope.isAddBook= !$scope.isAddBook;
+			$scope.isAddBook?$scope.btnAddBook= "Cancel":$scope.btnAddBook= "Novo";
+			return $scope.isAddBook;
+			
 		}
-
-		$scope.adicionarBook = function(book){
+		$scope.addBook = function(book){
 			console.log(book);
 			if(!book){
 				console.log("Erro ao Adicionar");
@@ -145,9 +136,43 @@ angular
 				book.id = 0;
 				Book.create(book).$promise.then(function(res,err){
 					console.log(res);
+				$scope.formAddBook.$setPristine();
 				});
 				
 			}
+			$scope.showAddBook();
 		}
 		listaBook();
+
+	}])
+	.controller('BookAdicionaCotroller',['$scope','$state','Book','Author', function($scope, $state,Book,Author){
+		//#### Create ####
+		// $scope.books =[];
+		// $scope.authors1 =[]; //Lista id author sem duplicidade
+		
+
+		// function listaBook(){
+		// 	Book.find().$promise.then(function(res,err){
+		// 		$scope.books= res;
+		//     });
+		//     Author.find().$promise.then(function(res,err){
+		// 		$scope.authors1 =res;
+		// 		console.log($scope.authors);				
+		//     	console.log('Unir lista'); 
+		//     });
+		// }
+
+		// $scope.adicionarBook = function(book){
+		// 	console.log(book);
+		// 	if(!book){
+		// 		console.log("Erro ao Adicionar");
+		// 	}else{
+		// 		book.id = 0;
+		// 		Book.create(book).$promise.then(function(res,err){
+		// 			console.log(res);
+		// 		});
+				
+		// 	}
+		// }
+		// listaBook();
 	}]);

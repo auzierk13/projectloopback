@@ -1,9 +1,35 @@
 <h2>Lista de Books</h2>
 <hr>
+
+
 <div>
-    <a href="#!/adiciona-book" class="btn btn-large btn-primary">Novo</a>
+    <!-- <a href="#!/adiciona-book" class="btn btn-large btn-primary" >Novo</a> -->
+    <button class="btn btn-primary" ng-click="showAddBook()">{{btnAddBook}}</button>
 </div>
 <br>
+<form class="form-inline" ng-show="isAddBook" name="formAddBook">
+    <legend>Novo Book</legend>
+    <div class="jumbotron">
+        <div class="form-group">
+            <label class="sr-only" >Title</label>
+            <input type="text" ng-Required="true" placeholder="Title"
+                   class="form-control" ng-model="book.title">
+            <label class="sr-only" >Authorid </label>
+            <select class="selectpicker form-control"
+                    ng-model="book.authorid" ng-Required="true" 
+                    ng-options="author.id as author.id for author in authors">
+              <option value=""> Selecione o author </option>
+            </select>
+             <!-- <p>{{formAddBook.$valid}}</p> -->
+        </div>
+    <button href="#!/lista-book" ng-click="addBook(book)"
+        ng-disabled="!formAddBook.$valid"
+        class="btn btn-primary"
+        type="reset">
+        Cadastrar
+    </div>
+</form>
+
 
 <form class="form-inline">
     <div class="form-group" >
@@ -92,13 +118,13 @@
                 <input class="form-control" ng-model="book.title"
                         type="text" placeholder={{dataBook.title}}> 
             </div>
+            <!-- {{dataBook}} -->
             <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Author id</span>
                 <select class="selectpicker form-control"  data-style="btn-primary"
-                        ng-model="book.authorid">
-                    <option ng-repeat="option in authors" >
-                        {{option.id}}
-                    </option>
+                        ng-model="book.authorid" ng-options="option.id as option.id for option in authors">
+                    <!-- <option value="{{dataBook.authorid}}" >{{dataBook.authorid}} </option> -->
+                    <option value=""> {{dataBook.authorid}} </option>
             </select>
             </div>
             <div class="input-group">
