@@ -21,16 +21,28 @@ angular
 						{nome: "firstname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"},
 						{nome: "lastname", selectIcone: false, img:"glyphicon glyphicon-chevron-up"}
 					 ];
-	function chooseIcone (fieldSort) {
-		 $scope.isIcones.forEach( function(icone) {
-		 	if(icone.nome === fieldSort){
-				icone.selectIcone=!icone.selectIcone; //Inverte o icone
-		 	}else{
-		 		icone.selectIcone=false;
-		 	}
-				!icone.selectIcone? icone.img="glyphicon glyphicon-chevron-up":icone.img="glyphicon glyphicon-chevron-down";
-		 });
-	}
+		function chooseIcone (fieldSort) {
+			 $scope.isIcones.forEach( function(icone) {
+			 	if(icone.nome === fieldSort){
+					icone.selectIcone=!icone.selectIcone; //Inverte o icone
+			 	}else{
+			 		icone.selectIcone=false;
+			 	}
+					!icone.selectIcone? icone.img="glyphicon glyphicon-chevron-up":icone.img="glyphicon glyphicon-chevron-down";
+			 });
+		}
+
+		$scope.isAddAuthor = false;
+
+		$scope.showAddAuthor = function(author){
+			// console.log("Adicionar Author");
+			$scope.isAddAuthor= !$scope.isAddAuthor;
+			if($scope.author){ // modelo não vazio
+				delete $scope.author;
+			}
+			return $scope.isAddAuthor;
+			
+		}
 
 		$scope.sort = function(fieldSort){
 			console.log(fieldSort);
@@ -74,21 +86,25 @@ angular
 
 		listaAuthor();
 
-	}])
-
-	.controller('AuthorAdicionaController',['$scope','$state','Author', function($scope, $state, Author){
-		// $scope.form = {};
-
-		$scope.adicionarAuthor = function(author){
+		$scope.addAuthor = function(author){
 			if(!author){
 				console.log("Erro ao Adicionar");
+				delete $scope.author;
 			}else{
 				author.id = 0;
 				console.log(author);
 				Author.create(author).$promise.then(function(res,err){
 				console.log(res);
+				 delete $scope.author;
+				 // console.log($scope.author);
 				});
 				
 			}
 		}
+
+	}])
+
+	.controller('AuthorAdicionaController',['$scope','$state','Author', function($scope, $state, Author){
+		// $scope.form = {};
+
 	}]);

@@ -4,9 +4,10 @@
 
 <div>
     <!-- <a href="#!/adiciona-book" class="btn btn-large btn-primary" >Novo</a> -->
-    <button class="btn btn-primary" ng-show="!isAddBook" ng-click="showAddBook()">{{btnAddBook}}</button>
+    <button class="btn btn-primary" ng-show="!isAddBook" ng-click="showAddBook()">Novo</button>
 </div>
 <br>
+
 <form class="form-inline" ng-show="isAddBook" name="formAddBook">
     <legend>Novo Book</legend>
     <div class="jumbotron">
@@ -22,8 +23,8 @@
             </select>
              <!-- <p>{{formAddBook.$valid}}</p> -->
         </div>
-        <button type="reset" class="btn btn-warning" ng-click="showAddBook()">Cancel</button>
-        <button href="#!/lista-book" ng-click="addBook(book)"
+        <button type="reset" class="btn btn-warning" ng-click="showAddBook(book)">Cancel</button>
+        <button ng-click="addBook(book)"
         ng-disabled="!formAddBook.$valid"
         class="btn btn-primary"
         type="reset">

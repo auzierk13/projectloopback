@@ -1,9 +1,41 @@
 <h2>Lista de Author</h2>
 <hr>
 <div>
-    <a href="#!/adiciona-author" class="btn btn-large btn-primary">Novo</a>
+    <button class="btn btn-large btn-primary" 
+            ng-click="showAddAuthor()"
+            ng-show="!isAddAuthor">
+              Novo
+    </button>
 </div>
 <br>
+
+
+<form class="form-inline" ng-show="isAddAuthor" name="formAddAuthor">
+    <legend>Novo Author</legend>
+    <div class="jumbotron">
+        <div class="form-group">
+            <label class="sr-only">Frist Name</label>
+            <input type="text" placeholder="Frist Name" 
+                   class="form-control" 
+                   ng-required="true" ng-model="author.firstname">
+            <label class="sr-only" for="">Last Name</label>
+            <input type="text" placeholder="Last Name"  
+                   class="form-control" 
+                   ng-required="true" ng-model="author.lastname">
+        </div>
+  <!--   <p> invalid {{formAddAuthor.$invalid}}</p>
+    <p> Author {{author.firstname}}</p>
+    <p>Author {{author.lastname}}</p> -->
+    <!-- É $setDirty()  {{formAddAuthor.$setDirty}}? -->
+    <button type="reset" class="btn btn-warning" ng-click="showAddAuthor(author)">Cancel</button>
+    <button type="reset" class="btn btn-primary"
+        ng-click="addAuthor(author)"
+        ng-disabled="!formAddAuthor.$valid" >
+        Cadastrar
+    </button>
+    </div>
+</form>
+
 <form class="form-inline">
     <div class="form-group" >
         <span class="input-group-addon glyphicon glyphicon-search">

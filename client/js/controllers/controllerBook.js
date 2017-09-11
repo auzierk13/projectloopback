@@ -93,7 +93,7 @@ angular
 				editaAuthor(author);
 		}
 
-			
+
 		//############ Sort books #####################
 		$scope.sortField = "id";
  	 	$scope.reverse= false;
@@ -122,12 +122,13 @@ angular
 		}
 
 		$scope.isAddBook = false;
-		$scope.btnAddBook= "Novo";
 
-		$scope.showAddBook = function(){
-			console.log("Adicionar Livro");
+		$scope.showAddBook = function(book){
+			// console.log("Adicionar Livro");
 			$scope.isAddBook= !$scope.isAddBook;
-			// $scope.isAddBook?$scope.btnAddBook= "Cancel":$scope.btnAddBook= "Novo";
+			if($scope.book){ //Modelo não vazio
+				delete $scope.book;
+			}
 			return $scope.isAddBook;
 			
 		}
@@ -135,15 +136,15 @@ angular
 			console.log(book);
 			if(!book){
 				console.log("Erro ao Adicionar");
+				delete $scope.book;
 			}else{
 				book.id = 0;
-				Book.create(book).$promise.then(function(res,err){
-					console.log(res);
-				$scope.formAddBook.$setPristine();
-				});
+				// Book.create(book).$promise.then(function(res,err){
+				// 	console.log(res);
+					delete $scope.book;
+				// });
 				
 			}
-			$scope.showAddBook();
 		}
 		listaBook();
 
