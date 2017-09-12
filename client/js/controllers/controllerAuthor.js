@@ -52,24 +52,25 @@ angular
 		}
 
 
-		$scope.editaAuthor = function(editAuthor){
+		$scope.editaAuthor = function(mEditAuthor){
 
-			if(!editAuthor){
+			if(!mEditAuthor){
 				console.log("Erro ao Editar");
 			}else{
 				console.log("Editar");
-				if(editAuthor.firstname){
-					$scope.dataAuthor.firstname = editAuthor.firstname; 
-					console.log('Não possui firstname');
-				}else if(editAuthor.lastname){
-					$scope.dataAuthor.lastname = editAuthor.lastname; 
-					// editAuthor.lastname = $scope.dataAuthor.lastname;
-					console.log('Não possui lastname');
+				if(mEditAuthor.firstname){
+					console.log('Possui firstname');
+					$scope.dataAuthor.firstname = mEditAuthor.firstname; 
 				}
-				// editAuthor.id = $scope.dataAuthor.id; //recebe id selecionado
-				delete $scope.editAuthor;
+
+				if(mEditAuthor.lastname){
+					console.log('Possui lastname');
+					$scope.dataAuthor.lastname = mEditAuthor.lastname; 
+				}
+				delete $scope.mEditAuthor;
 				console.log($scope.dataAuthor);
 				Author.replaceById($scope.dataAuthor.id,$scope.dataAuthor, function(err, res) {
+					console.log(err);
 					listaAuthor();
 				});
 			}
@@ -94,8 +95,9 @@ angular
 				author.id = 0;
 				console.log(author);
 				Author.create(author).$promise.then(function(res,err){
-				console.log(res);
-				 delete $scope.author;
+					console.log(res);
+				 	delete $scope.author;
+				 	listaAuthor(); //Atualiza com novo author
 				 // console.log($scope.author);
 				});
 				
@@ -105,6 +107,5 @@ angular
 	}])
 
 	.controller('AuthorAdicionaController',['$scope','$state','Author', function($scope, $state, Author){
-		// $scope.form = {};
 
 	}]);

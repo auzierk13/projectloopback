@@ -129,31 +129,31 @@
              </div>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">Title</span>
-                <input class="form-control" ng-model="book.title"
+                <input class="form-control" ng-model="mEditbook.title"
                         type="text" placeholder={{dataBook.title}}> 
             </div>
             <!-- {{dataBook}} -->
             <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Author id</span>
                 <select class="selectpicker form-control"  data-style="btn-primary"
-                        ng-model="book.authorid" ng-options="option.id as option.id for option in authors">
+                        ng-model="mEditbook.authorid" ng-options="option.id as option.id for option in authors">
                     <!-- <option value="{{dataBook.authorid}}" >{{dataBook.authorid}} </option> -->
                     <option value=""> {{dataBook.authorid}} </option>
             </select>
             </div>
             <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">First Name</span>
-                <input class="form-control " ng-model="author.firstname"
+                <input class="form-control " ng-model="mEditAuthor.firstname"
                         type="text" placeholder={{dataBook.firstname}}>
             </div>
             <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Last Name</span>
-                <input class="form-control " ng-model="author.lastname"
+                <input class="form-control " ng-model="mEditAuthor.lastname"
                         type="text" placeholder={{dataBook.lastname}}>
             </div>
          </div>
           <div class="modal-footer ">
-                <button type="reset" ng-click="editaBook(book,author);" class="btn btn-warning btn-lg"
+                <button type="reset" ng-click="editaBook(mEditbook,mEditAuthor);" class="btn btn-warning btn-lg"
                 style="width: 100%;"><span class="glyphicon glyphicon-ok"></span> Update</button>
           </div>
         </div>

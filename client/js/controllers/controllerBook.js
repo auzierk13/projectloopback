@@ -43,52 +43,53 @@ angular
 			});
 		}
 		//######### Editar ###########
-		function editaAuthor (editAuthor){
+		function editaAuthor (mEditAuthor){
 
-			if(!editAuthor){
+			if(!mEditAuthor){
 				console.log("Erro ao Editar");
 			}else{
 				console.log("Editar");
-				if(!editAuthor.firstname){
-					editAuthor.firstname = $scope.dataBook.lastname;
-					// $scope.dataAuthor.firstname = editAuthor.firstname; 
+				if(!mEditAuthor.firstname){
+					mEditAuthor.firstname = $scope.dataBook.lastname;
+					// $scope.dataAuthor.firstname = mEditAuthor.firstname; 
 					console.log('Não possui firstname');
-				}else if(!editAuthor.lastname){
-					editAuthor.lastname = $scope.dataBook.lastname;
-					// $scope.dataAuthor.lastname = editAuthor.lastname; 
+				}else if(!mEditAuthor.lastname){
+					mEditAuthor.lastname = $scope.dataBook.lastname;
+					// $scope.dataAuthor.lastname = mEditAuthor.lastname; 
 					console.log('Não possui lastname');
 				}
-				editAuthor.id = $scope.dataBook.idAuthor; //recebe id selecionado
-				console.log(editAuthor);
-				Author.replaceById($scope.dataBook.id,editAuthor, function(err, res) {
-					delete $scope.editAuthor;
+				mEditAuthor.id = $scope.dataBook.idAuthor; //recebe id selecionado
+				console.log(mEditAuthor);
+				Author.replaceById($scope.dataBook.id,mEditAuthor, function(err, res) {
+					delete $scope.mEditAuthor;
 					listaBook();
 				});
 			}
 		}
 		//Editar livro
-		$scope.editaBook = function(book,author){
+		$scope.editaBook = function(mEditbook,mEditAuthor){
 
-			if(!book){
+			if(!mEditbook){
 				console.log("Erro ao Editar");
 			}else{
 				console.log("Editar");
-				if(book.title){
-					$scope.dataBook.title = book.title; 
-					// console.log('Não possui title');
-				}else if(book.authorid){
-					$scope.dataBook.authorid = book.authorid; 
-					// console.log('Não possui authorid');
+				if(mEditbook.title){
+					console.log('Possui title');
+					$scope.dataBook.title = mEditbook.title; 
 				}
-				// editAuthor.id = $scope.dataAuthor.id; //recebe id selecionado
-				delete $scope.book;
+
+				if(mEditbook.authorid){
+					console.log('Possui authorid');
+					$scope.dataBook.authorid = mEditbook.authorid; 
+				}
+				delete $scope.mEditbook;
 				// console.log($scope.dataBook);
 				Book.replaceById($scope.dataBook.id,$scope.dataBook, function(err, res) {
 					listaBook();
 				});
 
 			}
-				editaAuthor(author);
+				editaAuthor(mEditAuthor);
 		}
 
 
@@ -137,10 +138,11 @@ angular
 				delete $scope.book;
 			}else{
 				book.id = 0;
-				// Book.create(book).$promise.then(function(res,err){
-				// 	console.log(res);
+				Book.create(book).$promise.then(function(res,err){
+					console.log(res);
 					delete $scope.book;
-				// });
+					listaBook();
+				});
 				
 			}
 		}
